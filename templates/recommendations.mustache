@@ -1,0 +1,96 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_datacurso_recomendate/recommendations
+
+    TODO describe template recommendations
+
+    Example context (json):
+    {
+    }
+}}
+
+<div class="recs-block" data-region="recs-block">
+  <div class="recs-header mb-3">
+    {{{selector}}}
+  </div>
+
+  {{! Vista de tarjetas }}
+  <div class="recs-list recs-cards {{#viewmode_is_cards}}{{else}}d-none{{/viewmode_is_cards}}">
+    <div class="row">
+      {{#courses}}
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="rec-item card h-100 shadow-sm">
+            {{#imageurl}}
+              <img src="{{imageurl}}" class="card-img-top" alt="{{fullname}}" style="height: 180px; object-fit: cover;">
+            {{/imageurl}}
+            {{^imageurl}}
+              <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 180px;">
+                <i class="fa fa-book fa-3x text-white"></i>
+              </div>
+            {{/imageurl}}
+
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="{{courseurl}}">{{fullname}}</a>
+              </h5>
+              <p class="card-text small text-muted">
+                {{#str}} satisfaction, block_datacurso_recomendate, {{course_satisfaction}} {{/str}}<br>
+                {{#str}} preference, block_datacurso_recomendate, {{category_preference_pct}} {{/str}}
+              </p>
+            </div>
+          </div>
+        </div>
+      {{/courses}}
+    </div>
+  </div>
+
+  {{! Vista de lista }}
+  <div class="recs-list recs-list-view {{#viewmode_is_list}}{{else}}d-none{{/viewmode_is_list}}">
+    {{#courses}}
+      <div class="rec-item card mb-2 shadow-sm">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-md-2">
+              {{#imageurl}}
+                <img src="{{imageurl}}" class="img-fluid rounded" alt="{{fullname}}" style="max-height: 80px; object-fit: cover;">
+              {{/imageurl}}
+              {{^imageurl}}
+                <div class="bg-secondary rounded d-flex align-items-center justify-content-center" style="height: 80px;">
+                  <i class="fa fa-book fa-2x text-white"></i>
+                </div>
+              {{/imageurl}}
+            </div>
+            <div class="col-md-7">
+              <h6 class="mb-1">
+                <a href="{{courseurl}}">{{fullname}}</a>
+              </h6>
+              <p class="mb-0 small text-muted">
+                {{#str}} satisfaction, block_datacurso_recomendate, {{course_satisfaction}} {{/str}}
+                {{#str}} preference, block_datacurso_recomendate, {{category_preference_pct}} {{/str}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/courses}}
+  </div>
+
+  <div class="recs-pagination mt-3">
+    {{{pagination}}}
+  </div>
+</div>
