@@ -111,7 +111,7 @@ Select the block and it will load on your page.
 ### 4. View the Recommended Courses Block
 This shows the recommended courses based on the student's activity likes information from the Ranking plugin. Puede ordenar la vista según lo que eliga en el selector. 
 
-![Recommended Courses](./_docs/images/block_datacurso_recomendate_main.png.png)
+![Recommended Courses](./_docs/images/block_datacurso_recomendate_main.png)
 
 ---
 ## License
