@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 $string['blocktitle'] = 'Kursus berdasarkan preferensi Anda';
 $string['norecs'] = 'Tidak ada kursus yang direkomendasikan saat ini.';
 $string['pluginname'] = 'Kursus yang direkomendasikan';
-$string['poweredbydatacurso'] = 'Didukung oleh Datacurso LLC';
+$string['poweredbydatacurso'] = 'Didukung oleh';
 $string['preference'] = 'Preferensi kategori: {$a}%';
 $string['satisfaction'] = 'Kepuasan keseluruhan: {$a}%';
 $string['score'] = 'Skor: {$a}';

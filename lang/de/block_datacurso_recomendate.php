@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 $string['blocktitle'] = 'Kurse basierend auf deinen Vorlieben';
 $string['norecs'] = 'Zurzeit sind keine empfohlenen Kurse verfügbar.';
 $string['pluginname'] = 'Empfohlene Kurse';
-$string['poweredbydatacurso'] = 'Bereitgestellt von Datacurso LLC';
+$string['poweredbydatacurso'] = 'Bereitgestellt von';
 $string['preference'] = 'Kategoriepräferenz: {$a}%';
 $string['satisfaction'] = 'Gesamtzufriedenheit: {$a}%';
 $string['score'] = 'Bewertung: {$a}';
