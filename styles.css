@@ -1,18 +1,18 @@
 .recs-list.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
 }
 
 .recs-list.list .rec-item {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .recs-list.list .rec-item img {
-  max-width: 150px;
-  margin-right: 1rem;
+    max-width: 150px;
+    margin-right: 1rem;
 }
 
 .recs-block .rec-item {
