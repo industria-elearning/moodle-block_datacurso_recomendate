@@ -23,13 +23,14 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Datacurso Recomendate';
-$string['blocktitle'] = 'Cursos según tus preferencias';
-$string['norecs'] = 'No hay cursos recomendados disponibles en este momento.';
-$string['view_cards'] = 'Vista en tarjetas';
-$string['view_list'] = 'Vista en lista';
-$string['satisfaction'] = 'Satisfacción global: {$a}%';
-$string['preference'] = 'Preferencia por categoría: {$a}%';
+defined('MOODLE_INTERNAL') || die();
+$string['blocktitle'] = 'Courses based on your preferences';
+$string['norecs'] = 'There are no recommended courses available at the moment.';
+$string['pluginname'] = 'Recommended courses';
+$string['poweredbydatacurso'] = 'Powered by Datacurso LLC';
+$string['preference'] = 'Category preference: {$a}%';
+$string['satisfaction'] = 'Overall satisfaction: {$a}%';
 $string['score'] = 'Score: {$a}';
+$string['view_cards'] = 'Card view';
+$string['view_list'] = 'List view';

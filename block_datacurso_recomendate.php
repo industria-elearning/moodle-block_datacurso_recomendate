@@ -15,43 +15,53 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Block datacurso_recomendate is defined here.
+ * Block datacurso_recomendate definition.
  *
  * @package     block_datacurso_recomendate
  * @copyright   Josue <josue@datacurso.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
+/**
+ * Block class for displaying recommended courses.
+ */
 class block_datacurso_recomendate extends block_base {
-
+    /**
+     * Initializes the block title.
+     *
+     * @return void
+     */
     public function init() {
         $this->title = get_string('blocktitle', 'block_datacurso_recomendate');
     }
 
+    /**
+     * Specifies the page formats where this block can be added.
+     *
+     * @return array
+     */
     public function applicable_formats() {
         return ['my' => true, 'site' => true];
     }
 
     /**
-     * Obtiene la URL de la imagen del curso.
-     * Intenta obtener la imagen personalizada o genera una por defecto.
+     * Retrieves the course image URL.
+     * Attempts to get a custom course image or generates a default one.
      *
-     * @param int $courseid ID del curso
-     * @return string|null URL de la imagen o null
+     * @param int $courseid Course ID.
+     * @return string|null Image URL or null.
      */
     protected function get_course_image($courseid) {
         global $CFG;
 
         try {
-            // Método 1: Usar la clase core_course_list_element (Moodle 3.0+)
+            // Method 1: Use the core_course_list_element class (Moodle 3.0+).
             if (class_exists('core_course_list_element')) {
                 require_once($CFG->dirroot . '/course/lib.php');
                 $course = get_course($courseid);
                 $courseobj = new core_course_list_element($course);
-                
-                // Obtener la primera imagen disponible
+
+                // Get the first available image.
                 foreach ($courseobj->get_course_overviewfiles() as $file) {
                     if ($file->is_valid_image()) {
                         return moodle_url::make_pluginfile_url(
@@ -65,7 +75,7 @@ class block_datacurso_recomendate extends block_base {
                     }
                 }
             } else {
-                // Método 2: Buscar directamente en el área de archivos (fallback para versiones antiguas)
+                // Method 2: Search directly in the file area (fallback for older Moodle versions).
                 $context = context_course::instance($courseid);
                 $fs = get_file_storage();
                 $files = $fs->get_area_files(
@@ -79,7 +89,7 @@ class block_datacurso_recomendate extends block_base {
 
                 if (!empty($files)) {
                     foreach ($files as $file) {
-                        // Verificar que sea una imagen válida
+                        // Check if it is a valid image.
                         $mimetype = $file->get_mimetype();
                         if (strpos($mimetype, 'image/') === 0) {
                             return moodle_url::make_pluginfile_url(
@@ -95,63 +105,67 @@ class block_datacurso_recomendate extends block_base {
                 }
             }
 
-            // Método 3: Imagen por defecto generada por Moodle
+            // Method 3: Use Moodle's generated default image.
             return $this->get_default_course_image($courseid);
 
         } catch (Exception $e) {
-            // En caso de error, devolver imagen por defecto
-            debugging('Error obteniendo imagen del curso ' . $courseid . ': ' . $e->getMessage(), DEBUG_DEVELOPER);
+            // In case of error, return the default image.
+            debugging('Error getting course image for ' . $courseid . ': ' . $e->getMessage(), DEBUG_DEVELOPER);
             return $this->get_default_course_image($courseid);
         }
     }
 
     /**
-     * Genera una URL de imagen por defecto para el curso.
-     * Usa el sistema de patrones de Moodle o un placeholder.
+     * Generates a default course image URL.
+     * Uses Moodle’s built-in system or a placeholder image.
      *
-     * @param int $courseid ID del curso
-     * @return string URL de la imagen por defecto
+     * @param int $courseid Course ID.
+     * @return string Default image URL.
      */
     protected function get_default_course_image($courseid) {
         global $OUTPUT;
 
-        // Opción 1: Usar el sistema de imágenes por defecto de Moodle (Moodle 3.6+)
+        // Option 1: Use Moodle’s generated image system (Moodle 3.6+).
         if (method_exists($OUTPUT, 'get_generated_image_for_id')) {
             return $OUTPUT->get_generated_image_for_id($courseid);
         }
 
-        // Opción 2: Usar imagen genérica de curso
+        // Option 2: Use the generic course image.
         if (method_exists($OUTPUT, 'image_url')) {
             return $OUTPUT->image_url('course_defaultimage', 'moodle')->out(false);
         }
 
-        // Opción 3: Generar patrón de color basado en el ID del curso
+        // Option 3: Generate a color pattern based on the course ID.
         return $this->generate_pattern_image_url($courseid);
     }
 
     /**
-     * Genera una URL de imagen de patrón basada en el ID del curso.
-     * Usa un servicio externo o crea un placeholder con color.
+     * Generates a color-based pattern image URL for a course.
+     * Uses an external placeholder service.
      *
-     * @param int $courseid ID del curso
-     * @return string URL de la imagen generada
+     * @param int $courseid Course ID.
+     * @return string Generated image URL.
      */
     protected function generate_pattern_image_url($courseid) {
-        // Generar un color basado en el ID del curso
+        // Generate a color based on the course ID.
         $colors = [
             '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
-            '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'
+            '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf',
         ];
         $color = $colors[$courseid % count($colors)];
         $color = str_replace('#', '', $color);
 
-        // Usar placeholder.com o similar para generar una imagen
-        // Puedes cambiar esto por tu propio generador de imágenes
-        return "https://via.placeholder.com/400x200/{$color}/ffffff?text=Curso+{$courseid}";
+        // Use placeholder.com or a custom image generator.
+        return "https://via.placeholder.com/400x200/{$color}/ffffff?text=Course+{$courseid}";
     }
 
+    /**
+     * Returns the main content of the block.
+     *
+     * @return stdClass Block content.
+     */
     public function get_content() {
-        global $USER, $CFG, $PAGE, $OUTPUT;
+        global $USER, $CFG, $OUTPUT;
 
         if ($this->content !== null) {
             return $this->content;
@@ -162,11 +176,15 @@ class block_datacurso_recomendate extends block_base {
 
         require_once($CFG->dirroot . '/local/datacurso_ratings/classes/recommendations/service.php');
 
-        $viewmode = optional_param('viewmode', 'cards', PARAM_ALPHA);
+        $viewmode = optional_param('viewmode', '', PARAM_ALPHA);
+        if (empty($viewmode)) {
+            $viewmode = 'cards';
+        }
+
         $page = optional_param('page', 0, PARAM_INT);
         $perpage = 6;
 
-        // Obtener recomendaciones
+        // Get recommendations.
         $recs = \local_datacurso_ratings\recommendations\service::get_recommendations_for_user($USER->id, 50);
         $total = count($recs);
 
@@ -178,15 +196,15 @@ class block_datacurso_recomendate extends block_base {
             return $this->content;
         }
 
-        // Paginación manual
+        // Manual pagination.
         $pagedrecs = array_slice($recs, $page * $perpage, $perpage);
 
-        // Construir array de cursos con imagen mejorada
+        // Build enhanced course list with images.
         $courses = [];
         foreach ($pagedrecs as $rec) {
             $courseurl = new moodle_url('/course/view.php', ['id' => $rec['courseid']]);
 
-            // Obtener imagen del curso usando el método mejorado
+            // Get course image using the improved method.
             $imgurl = $this->get_course_image($rec['courseid']);
 
             $courses[] = [
@@ -196,38 +214,39 @@ class block_datacurso_recomendate extends block_base {
                 'hasimage' => !empty($imgurl),
                 'course_satisfaction' => $rec['course_satisfaction'],
                 'category_preference_pct' => $rec['category_preference_pct'],
-                'score' => round($rec['score'], 2)
+                'score' => round($rec['score'], 2),
             ];
         }
 
-        // Selector de vista
+        // View selector.
         $baseurl = new moodle_url('/my/index.php');
         $selector = html_writer::select(
             [
                 'cards' => get_string('view_cards', 'block_datacurso_recomendate'),
-                'list' => get_string('view_list', 'block_datacurso_recomendate')
+                'list' => get_string('view_list', 'block_datacurso_recomendate'),
             ],
             'viewmode',
             $viewmode,
             false,
             [
                 'id' => 'viewmode-selector',
-                'class' => 'custom-select'
+                'class' => 'custom-select',
             ]
         );
 
-        // Paginación
+        // Pagination.
         $pagination = $OUTPUT->paging_bar($total, $page, $perpage, $baseurl);
 
-        $PAGE->requires->js_call_amd('block_datacurso_recomendate/selectview', 'init');
-        
+        // Load AMD JS module.
+        $this->page->requires->js_call_amd('block_datacurso_recomendate/selectview', 'init');
+
         $data = [
             'viewmode' => $viewmode,
             'viewmode_is_cards' => ($viewmode === 'cards'),
             'viewmode_is_list' => ($viewmode === 'list'),
             'selector' => $selector,
             'courses' => $courses,
-            'pagination' => $pagination
+            'pagination' => $pagination,
         ];
 
         $this->content->text = $OUTPUT->render_from_template(

@@ -27,5 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'block_datacurso_recomendate';
 $plugin->release = '0.1.0';
 $plugin->version = 2025100100;
-$plugin->requires = 2022112800;
+$plugin->requires = 2024100700;
 $plugin->maturity = MATURITY_ALPHA;
+$plugin->dependencies = [
+    'local_datacurso_ratings' => 2025101600,
+];

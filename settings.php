@@ -22,11 +22,13 @@
  * @copyright   Josue <josue@datacurso.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 defined('MOODLE_INTERNAL') || die();
 
 if ($hassiteconfig) {
-    $settings = new admin_settingpage('block_datacurso_recomendate_settings', new lang_string('pluginname', 'block_datacurso_recomendate'));
+    $settings = new admin_settingpage(
+        'block_datacurso_recomendate_settings',
+        new lang_string('pluginname', 'block_datacurso_recomendate')
+    );
 
     // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedIf
     if ($ADMIN->fulltree) {

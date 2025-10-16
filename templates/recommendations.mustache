@@ -30,7 +30,7 @@
   </div>
 
   {{! Vista de tarjetas }}
-  <div class="recs-list recs-cards {{#viewmode_is_cards}}{{else}}d-none{{/viewmode_is_cards}}">
+  <div class="recs-list recs-cards {{^viewmode_is_cards}}d-none{{/viewmode_is_cards}}">
     <div class="row">
       {{#courses}}
         <div class="col-md-6 col-lg-4 mb-3">
@@ -60,7 +60,7 @@
   </div>
 
   {{! Vista de lista }}
-  <div class="recs-list recs-list-view {{#viewmode_is_list}}{{else}}d-none{{/viewmode_is_list}}">
+  <div class="recs-list recs-list-view {{^viewmode_is_list}}d-none{{/viewmode_is_list}}">
     {{#courses}}
       <div class="rec-item card mb-2 shadow-sm">
         <div class="card-body">
@@ -89,6 +89,13 @@
       </div>
     {{/courses}}
   </div>
+
+  <small class="text-center d-block mt-3">
+    <a href="https://datacurso.com/" target="_blank" rel="noopener noreferrer" 
+       style="text-decoration: none; color: #ef6b57; font-size: 0.75rem;">
+      {{#str}} poweredbydatacurso, block_datacurso_recomendate {{/str}}
+    </a>
+  </small>
 
   <div class="recs-pagination mt-3">
     {{{pagination}}}

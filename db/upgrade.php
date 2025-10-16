@@ -22,9 +22,6 @@
  * @copyright   Josue <josue@datacurso.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Execute block_datacurso_recomendate upgrade from the given old version.
  *
