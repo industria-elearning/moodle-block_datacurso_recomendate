@@ -25,6 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 $string['blocktitle'] = 'Kursus berdasarkan preferensi Anda';
+$string['datacurso_recomendate:addinstance'] = 'Tambahkan blok kursus yang direkomendasikan baru';
+$string['datacurso_recomendate:myaddinstance'] = 'Tambahkan blok kursus yang direkomendasikan baru ke dasbor';
 $string['norecs'] = 'Tidak ada kursus yang direkomendasikan saat ini.';
 $string['pluginname'] = 'Kursus yang direkomendasikan';
 $string['poweredbydatacurso'] = 'Didukung oleh';

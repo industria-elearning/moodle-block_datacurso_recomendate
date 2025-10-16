@@ -15,23 +15,34 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'block_datacurso_recomendate', language 'de'
+ * Capability definitions for Recommended courses
+ *
+ * Documentation: {@link https://moodledev.io/docs/apis/subsystems/access}
  *
  * @package    block_datacurso_recomendate
- * @category   string
+ * @category   access
  * @copyright  2025 Industria Elearning <info@industriaelearning.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
-$string['blocktitle'] = 'Kurse basierend auf deinen Vorlieben';
-$string['datacurso_recomendate:addinstance'] = 'Neuen Block mit empfohlenen Kursen hinzufügen';
-$string['datacurso_recomendate:myaddinstance'] = 'Neuen Block mit empfohlenen Kursen zum Dashboard hinzufügen';
-$string['norecs'] = 'Zurzeit sind keine empfohlenen Kurse verfügbar.';
-$string['pluginname'] = 'Empfohlene Kurse';
-$string['poweredbydatacurso'] = 'Bereitgestellt von';
-$string['preference'] = 'Kategoriepräferenz: {$a}%';
-$string['satisfaction'] = 'Gesamtzufriedenheit: {$a}%';
-$string['score'] = 'Bewertung: {$a}';
-$string['view_cards'] = 'Kartenansicht';
-$string['view_list'] = 'Listenansicht';
+
+$capabilities = [
+    'block/datacurso_recomendate:myaddinstance' => [
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => [
+            'user' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/my:manageblocks',
+    ],
+    'block/datacurso_recomendate:addinstance' => [
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => [
+            'manager' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
+    ],
+];

@@ -25,6 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 $string['blocktitle'] = 'Курсы по вашим предпочтениям';
+$string['datacurso_recomendate:addinstance'] = 'Добавить новый блок рекомендуемых курсов';
+$string['datacurso_recomendate:myaddinstance'] = 'Добавить новый блок рекомендуемых курсов на панель управления';
 $string['norecs'] = 'В настоящее время нет доступных рекомендуемых курсов.';
 $string['pluginname'] = 'Рекомендуемые курсы';
 $string['poweredbydatacurso'] = 'Работает на';
