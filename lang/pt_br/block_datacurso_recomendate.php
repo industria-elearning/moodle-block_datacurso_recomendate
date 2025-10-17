@@ -31,6 +31,7 @@ $string['norecs'] = 'Não há cursos recomendados disponíveis no momento.';
 $string['pluginname'] = 'Cursos recomendados';
 $string['poweredbydatacurso'] = 'Desenvolvido por';
 $string['preference'] = 'Preferência por categoria: {$a}%';
+$string['privacy:metadata'] = 'O plugin block_datacurso_recomendate não armazena nenhum dado pessoal.';
 $string['satisfaction'] = 'Satisfação geral: {$a}%';
 $string['score'] = 'Pontuação: {$a}';
 $string['view_cards'] = 'Visualização em cartões';

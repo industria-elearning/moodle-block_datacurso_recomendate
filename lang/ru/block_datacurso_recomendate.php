@@ -31,6 +31,7 @@ $string['norecs'] = 'В настоящее время нет доступных 
 $string['pluginname'] = 'Рекомендуемые курсы';
 $string['poweredbydatacurso'] = 'Работает на';
 $string['preference'] = 'Предпочтение по категории: {$a}%';
+$string['privacy:metadata'] = 'Плагин block_datacurso_recomendate не хранит никаких персональных данных.';
 $string['satisfaction'] = 'Общая удовлетворенность: {$a}%';
 $string['score'] = 'Оценка: {$a}';
 $string['view_cards'] = 'Просмотр карточками';

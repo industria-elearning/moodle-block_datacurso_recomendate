@@ -31,6 +31,7 @@ $string['norecs'] = 'Tidak ada kursus yang direkomendasikan saat ini.';
 $string['pluginname'] = 'Kursus yang direkomendasikan';
 $string['poweredbydatacurso'] = 'Didukung oleh';
 $string['preference'] = 'Preferensi kategori: {$a}%';
+$string['privacy:metadata'] = 'Plugin block_datacurso_recomendate tidak menyimpan data pribadi apa pun.';
 $string['satisfaction'] = 'Kepuasan keseluruhan: {$a}%';
 $string['score'] = 'Skor: {$a}';
 $string['view_cards'] = 'Tampilan kartu';

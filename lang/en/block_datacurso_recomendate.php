@@ -32,6 +32,7 @@ $string['norecs'] = 'There are no recommended courses available at the moment.';
 $string['pluginname'] = 'Recommended courses';
 $string['poweredbydatacurso'] = 'Powered by';
 $string['preference'] = 'Category preference: {$a}%';
+$string['privacy:metadata'] = 'The block_datacurso_recomendate plugin does not store any personal data.';
 $string['satisfaction'] = 'Overall satisfaction: {$a}%';
 $string['score'] = 'Score: {$a}';
 $string['view_cards'] = 'Card view';
