@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_datacurso_recomendate';
 $plugin->release = '1.0.1';
-$plugin->version = 2025120200;
+$plugin->version = 2025120400;
 $plugin->requires = 2024100700;
 $plugin->maturity = MATURITY_STABLE;
 $plugin->supported = [405, 500];
