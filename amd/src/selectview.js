@@ -18,42 +18,41 @@
  * @module block_datacurso_recomendate/selectview
  */
 
-/* eslint-disable */
 import $ from 'jquery';
+import Notification from 'core/notification';
 
 /**
- * Inicializa el selector de vista sin recargar la página.
+ * Init the view mode selector.
  */
 export const init = () => {
     $('#viewmode-selector').on('change', function() {
         const mode = $(this).val();
         const block = $(this).closest('[data-region="recs-block"]');
 
-        // Ocultar todas las listas
+        // Hide both views
         block.find('.recs-list').addClass('d-none');
 
-        // Mostrar según modo
+        // Show the selected view
         if (mode === 'cards') {
             block.find('.recs-cards').removeClass('d-none');
         } else {
             block.find('.recs-list-view').removeClass('d-none');
         }
 
-        // Opcional: recordar preferencia en localStorage
+        // Optional: Save preference to localStorage
         try {
             localStorage.setItem('datacurso_recs_viewmode', mode);
         } catch (e) {
-            console.log(e)
+            Notification.error(e.message);
         }
     });
 
-  
     try {
         const savedMode = localStorage.getItem('datacurso_recs_viewmode');
         if (savedMode) {
             $('#viewmode-selector').val(savedMode).trigger('change');
         }
     } catch (e) {
-        console.log(e)
+        Notification.error(e.message);
     }
 };
