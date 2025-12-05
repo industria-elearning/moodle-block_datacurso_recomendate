@@ -29,9 +29,4 @@ if ($hassiteconfig) {
         'block_datacurso_recomendate_settings',
         new lang_string('pluginname', 'block_datacurso_recomendate')
     );
-
-    // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedIf
-    if ($ADMIN->fulltree) {
-        // TO-DO: Define actual plugin settings page and add it to the tree - {@link https://docs.moodle.org/dev/Admin_settings}.
-    }
 }

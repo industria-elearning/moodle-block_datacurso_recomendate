@@ -108,7 +108,6 @@ class block_datacurso_recomendate extends block_base {
             // Method 3: Use Moodle's generated default image.
             return $this->get_default_course_image($courseid);
         } catch (Exception $e) {
-            // In case of error, return the default image.
             debugging('Error getting course image for ' . $courseid . ': ' . $e->getMessage(), DEBUG_DEVELOPER);
             return $this->get_default_course_image($courseid);
         }
