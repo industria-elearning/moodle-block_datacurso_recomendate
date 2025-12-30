@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Block datacurso_recomendate definition.
+ * Block class for DataCurso Recomendate.
  *
  * @package     block_datacurso_recomendate
  * @copyright   Josue <josue@datacurso.com>
